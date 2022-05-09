@@ -1,8 +1,5 @@
-FROM ubuntu:latest
-RUN apt-get -y update && \ 
- apt-get -y install golang && \
- go get github.com/gorsuch/haggar && \
- cd go/src/github.com/gorsuch/haggar && \
- go build
-WORKDIR /go/src/github.com/gorsuch/haggar
+FROM golang:latest
+COPY . /go/src/
+RUN cd /go/src/haggar 
+WORKDIR /go/src/haggar
 CMD ["./haggar"]
